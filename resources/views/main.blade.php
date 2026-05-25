@@ -323,6 +323,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ url('mahasiswa') }}" class="nav-link">
+                                <i class="nav-icon bi bi-people"></i>
+                                <p>Mahasiswa</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="../generate/theme.html" class="nav-link">
                                 <i class="nav-icon bi bi-palette"></i>
                                 <p>Theme Generate</p>
