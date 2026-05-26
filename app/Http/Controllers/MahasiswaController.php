@@ -33,7 +33,23 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->validate([
+            'npm' => 'required|unique:mahasiswa,npm',
+            'nama' => 'required',
+            'prodi_id' => 'required|exists:prodis,id',
+            'foto' => 'nullable|image|max:2048',
+        ]);
+
+       if ($request->hasFile('foto')) {
+         $filename = $input['npm'] . '.' . $request->file('foto')->getClientOriginalExtension();
+
+            $input['foto'] = $request->file('foto')->storeAS('fotos', $filename, 'public');
+        }
+        else {
+            $input['foto'] = null;
+        }
+        Mahasiswa::create($input);
+        return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa berhasil ditambahkan.');
     }
 
     /**
