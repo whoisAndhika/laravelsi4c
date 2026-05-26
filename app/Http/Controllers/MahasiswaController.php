@@ -34,7 +34,7 @@ class MahasiswaController extends Controller
     public function store(Request $request)
     {
         $input = $request->validate([
-            'npm' => 'required|unique:mahasiswa,npm',
+            'npm' => 'required|unique:mahasiswas,npm',
             'nama' => 'required',
             'prodi_id' => 'required|exists:prodis,id',
             'foto' => 'nullable|image|max:2048',
